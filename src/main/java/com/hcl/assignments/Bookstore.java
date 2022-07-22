@@ -132,8 +132,12 @@ public class Bookstore {
 			fos.write(arr);
 			s.close();
 			fos.close();
+			System.out.println("You will now be logged out.");
+			shopper = null;
 		} else {
 			System.out.println("Thank you for browsing.");
+			System.out.println("You will now be logged out.");
+			shopper = null;
 			s.close();
 		}
 
