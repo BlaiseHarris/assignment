@@ -183,7 +183,8 @@ class Customer {
 	}
 
 	public String reciept() {
-		return "Thank you for purchasing here " + this.username + ". Your items are: " + this.cart + " for a total of: $" + this.total;
+		return "Thank you for purchasing here " + this.username + ". Your items are: " + this.cart
+				+ " for a total of: $" + this.total;
 	}
 
 }
