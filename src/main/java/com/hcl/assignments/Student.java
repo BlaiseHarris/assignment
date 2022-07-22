@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Student {
 	
 	private String name;
-	private double[] scores = new double[3];
+	private long[] scores = new long[3];
 	
 	Student() {
 		this.name=null;
@@ -16,7 +16,7 @@ public class Student {
 		return name;
 	}
 
-	public String average(double exam1, double exam2, double exam3) {
+	public String average(long exam1, long exam2, long exam3) {
 		
 		this.scores[0] = exam1;
 		this.scores[1] = exam2;
