@@ -22,7 +22,7 @@ class Employee {
 	int salary;
 }
 
-public class StudentSortTest {
+public class EmployeeSortTest {
 	public static void main(String[] args) {
 		
 		List<Employee> list = new ArrayList<Employee>();
