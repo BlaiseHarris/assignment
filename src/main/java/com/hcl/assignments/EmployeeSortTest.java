@@ -3,6 +3,7 @@ package com.hcl.assignments;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import lombok.AllArgsConstructor;
@@ -32,10 +33,12 @@ public class EmployeeSortTest {
 		list.add(new Employee(6, "Jonny", 30, "Male", "HR Department", 2013, 75000));
 		list.add(new Employee(4, "Bob", 52, "Male", "HR Department", 2018, 91000));
 		
-		System.out.println("Female count: " + (int)list.stream().filter(item->item.getGender().toLowerCase().equals("female")).count());
-		System.out.println("Male count: " + (int)list.stream().filter(item->item.getGender().toLowerCase().equals("male")).count() + "\n");
+		Map<String,Long> maleandfemale=list
+                .stream()
+                .collect(Collectors.groupingBy(Employee::getGender,Collectors.counting()));
+		System.out.println("Female and Male count: " + maleandfemale);
 		
-		System.out.println("Average Age: " + list.stream().collect(Collectors.averagingInt(item->item.getAge())));
+		System.out.println("Average Age: " + list.stream().collect(Collectors.groupingBy(Employee::getGender, Collectors.averagingInt(item->item.getAge()))));
 		
 		System.out.println("Getting the max salary: " + list.stream().max((o1, o2) -> (o1.getSalary()-o2.getSalary())) + "\n");
 		
@@ -49,7 +52,7 @@ public class EmployeeSortTest {
 		
 		System.out.println("People that work in Maintenance: " + Arrays.toString(list.stream().filter(item->item.getDept().toLowerCase().equals("maintenance department")).toArray()) + "\n");
 		
-		System.out.println("Average Salary: " + list.stream().collect(Collectors.averagingInt(item->item.getSalary())) + "\n");
+		System.out.println("Average Salary: " + list.stream().collect(Collectors.groupingBy(Employee::getGender, Collectors.averagingInt(item->item.getSalary()))) + "\n");
 		
 		System.out.println("Employees between 25 and 30(inclusive): " + Arrays.toString(list.stream().filter(item->item.getAge() <= 30 && item.getAge() > 25).toArray()) + "\n");
 		
