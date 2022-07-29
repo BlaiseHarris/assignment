@@ -15,7 +15,7 @@ public class EmployeeManagement {
 		int input;
 		
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/empdb", "root", "M0nst3rF33t@3AM");
+		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/empdb", "root", "");
 		
 		System.out.println("Welcome to the Employee Management System");
 		System.out.println("-----------------------------------------------");

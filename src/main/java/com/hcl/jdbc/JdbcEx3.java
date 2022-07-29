@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class JdbcEx3 {
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/julyfsd","root","M0nst3rF33t@3AM");
+		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/julyfsd","root","");
 		CallableStatement cst = con.prepareCall("call insertEmp(?,?,?)");
 		
 		cst.setInt(1, 7);

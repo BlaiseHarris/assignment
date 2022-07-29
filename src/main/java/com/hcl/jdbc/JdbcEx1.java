@@ -9,7 +9,7 @@ import java.sql.Statement;
 public class JdbcEx1 {
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/julyfsd","root","M0nst3rF33t@3AM");
+		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/julyfsd","root","");
 		Statement st = con.createStatement();
 		st.execute("insert into emp values(1,'Dylan', 21)");
 		st.execute("insert into emp values(2,'Ajay', 25)");
