@@ -16,21 +16,20 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.sql.CallableStatement;
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Scanner;
 
-//Controller-> Navigates between your model and view
-@WebServlet("/create")
-public class CreateController extends HttpServlet {
 
+@WebServlet("/search")
+public class SearchController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-
-		Connection con = DatabaseConnect.initializeCon();
+  		Connection con = DatabaseConnect.initializeCon();
 		CallableStatement call = null;
+
 		try {
-			call = DatabaseConnect.getCreate();
+			System.out.println(con);
+			call = DatabaseConnect.getSearch();
+			System.out.println(call);
 		} catch (ClassNotFoundException | SQLException e1) {
 			e1.printStackTrace();
 		}
@@ -38,21 +37,12 @@ public class CreateController extends HttpServlet {
 		res.setContentType("text/html");
 		PrintWriter pw = res.getWriter();
 		String id = req.getParameter("id");
-		String firstName = req.getParameter("firstName");
-		String lastName = req.getParameter("lastName");
-		String age = req.getParameter("age");
 
 		boolean gotId = req.getParameter("id") != null; // model
-		boolean gotFirstName = req.getParameter("firstName") != null;
-		boolean gotLastName = req.getParameter("lastName") != null;
-		boolean gotAge = req.getParameter("age") != null;
 
-		if (gotId && gotFirstName && gotLastName && gotAge) {
+		if (gotId) {
 			try {
 				call.setInt(1, Integer.parseInt(id));
-				call.setString(2, firstName);
-				call.setString(3, lastName);
-				call.setInt(4, Integer.parseInt(age));
 			} catch (NumberFormatException e) {
 				e.printStackTrace();
 			} catch (SQLException e) {
@@ -60,20 +50,23 @@ public class CreateController extends HttpServlet {
 			}
 
 			try {
-				call.execute();
+				ResultSet rs = call.executeQuery();
+				if(rs.next()) {
+					DatabaseConnect.setResult("ID: " + rs.getInt(1) + " | Firstname: " + rs.getString(2) + " | Lastname: " + rs.getString(3) + " | Age: " + rs.getInt(4));
+					RequestDispatcher rd = req.getRequestDispatcher("searchSuccess.jsp");
+					rd.forward(req, res);
+				} else {
+					RequestDispatcher rd = req.getRequestDispatcher("searchFail.jsp");
+					rd.forward(req, res);
+				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-
-			RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
-			rd.forward(req, res);
-		} else {
-			RequestDispatcher rd = req.getRequestDispatcher("failure.jsp");
-			rd.forward(req, res);
 		}
 	}
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		doPost(req, res);
 	}
+
 }

@@ -7,12 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>Remove Employee</h2>
-	<form action="delete" method="post">
-		ID to Remove:<input type="text" name="id" style="margin: 2px">
+<h2>Search Employee</h2>
+	<form action="search" method="post">
+		ID to Search:<input type="text" name="id">
 		<br> 
-		<input type="submit" value="Remove" style="margin: 2px">
-		
+		<input type="submit" value="Search">
 	</form>
 	<%@ include file="chart.jsp"%>
 </body>

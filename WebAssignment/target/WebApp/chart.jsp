@@ -12,7 +12,8 @@
 	<h1>Current Employees</h1>
 	<p style="margin-right: 75%">
 		<%
-		out.println(DatabaseConnect.getData());
+		DatabaseConnect.initializeCon();
+		out.println(DatabaseConnect.getData(DatabaseConnect.initializeCon()));
 	%>
 	</p>
 </body>

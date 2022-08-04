@@ -27,7 +27,7 @@ public class UpdateController extends HttpServlet {
 	protected void doPost(HttpServletRequest req,HttpServletResponse res)
 	throws ServletException,IOException{
 		
-		Connection con = DatabaseConnect.getCon();
+		Connection con = DatabaseConnect.initializeCon();
 		PreparedStatement call = null;
 		
 		try {
@@ -73,15 +73,6 @@ public class UpdateController extends HttpServlet {
 			 RequestDispatcher rd=req.getRequestDispatcher("failure.jsp");
 			 rd.forward(req, res);
 		 } 
-
-		 
-//		 if(gotID && gotFirstName && gotLastName && gotAge) {
-//			 RequestDispatcher rd=req.getRequestDispatcher("success.jsp");
-//			 rd.forward(req, res);
-//		 }else {
-//			 RequestDispatcher rd=req.getRequestDispatcher("failure.jsp");
-//			 rd.forward(req, res);			 
-//		 }
 	} 
 		 protected void doGet(HttpServletRequest req,HttpServletResponse res)
 					throws ServletException,IOException{

@@ -1,3 +1,5 @@
+<%@page import="java.sql.Connection"%>
+<%@page import="cam.saran.DB.DatabaseConnect"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -7,13 +9,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>Remove Employee</h2>
-	<form action="delete" method="post">
-		ID to Remove:<input type="text" name="id" style="margin: 2px">
-		<br> 
-		<input type="submit" value="Remove" style="margin: 2px">
-		
-	</form>
+	<%@ include file="index.jsp"%>
 	<%@ include file="chart.jsp"%>
+	<h2 style="color: red">Employee not Found!</h2>
 </body>
 </html>

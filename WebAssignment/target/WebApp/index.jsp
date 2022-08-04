@@ -3,14 +3,14 @@
 	<h2>Selection Screen</h2>
 <body>
 	<form action="choice" method="post">
-		<input type="submit" name="create" value="Create">
+		<input type="submit" name="create" value="Create" style="margin: 2px">
+		<br>
+		<input type="submit" name="update" value="Update" style="margin: 2px">
+		<br>
+		<input type="submit" name="delete" value="Delete" style="margin: 2px">
+		<br>
+		<input type="submit" name="search" value="Search" style="margin: 2px">
+		<br>
 	</form>
-	<form action="update" method="post">
-		<input type="submit" name="update" value="Update">
-	</form>
-	<form action="delete" method="post">
-		<input type="submit" name="delete" value="Delete">
-	</form>
-	<%@ include file="chart.jsp"%>
 </body>
 </html>

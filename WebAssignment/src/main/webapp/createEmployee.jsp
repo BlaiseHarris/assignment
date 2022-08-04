@@ -9,17 +9,17 @@
 <body>
 <h2>Create Employee</h2>
 	<form action="create" method="post">
-		ID:<input type="text" name="id">
+		ID:<input type="text" name="id" style="margin: 2px">
 		<br> 
 		First Name:
-		<input type="firstName" name="firstName">
+		<input type="firstName" name="firstName" style="margin: 2px">
 		<br> 
 		last Name:
-		<input type="lastName" name="lastName">
+		<input type="lastName" name="lastName" style="margin: 2px">
 		<br> 
 		Age:
-		<input type="age" name="age"><br> <input type="submit" value="Create">
-		
+		<input type="age" name="age" style="margin: 2px"><br> 
+		<input type="submit" value="Create" style="margin: 2px">
 	</form>
 	<%@ include file="chart.jsp"%>
 </body>
