@@ -22,7 +22,7 @@ public class DatabaseConnect {
 		try {
 			if (con == null) {
 				Class.forName("com.mysql.cj.jdbc.Driver");
-				con = DriverManager.getConnection("jdbc:mysql://localhost:3306/empdb", "root", "M0nst3rF33t@3AM");
+				con = DriverManager.getConnection("jdbc:mysql://localhost:3306/empdb", "root", "");
 				PreparedStatement ps = con.prepareStatement("select * from emp");
 				ResultSet rs = ps.executeQuery();
 				empList.clear();
