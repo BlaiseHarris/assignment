@@ -34,7 +34,8 @@ public class EmployeeService {
 		empl.setSalary(emp.getSalary());
 		repo.save(empl);
 	}
-
+	
+	// For some odd reason lombok wasn't working so I had to generate the getters and setters
 	public void updateEmp(Integer id, Employee empl) {
 		Employee emp = repo.findById(id).get();
 		emp.setName(empl.getName());
